@@ -1,0 +1,1312 @@
+​<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DealerFire Product Strategy: Independent vs Franchise Market — Leadership Review, March 2026" />
+  <title>DealerFire · Product Strategy 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────────── */
+    :root {
+      --paper:       #f4f1eb;
+      --ink:         #0d0d0d;
+      --accent:      #c8392b;
+      --gold:        #c9a84c;
+      --muted:       #7a7468;
+      --rule:        #d4cfc5;
+      --franchise:   #1a3a5c;
+      --independent: #4a6741;
+      --franchise-2: #1e3a5f;
+      --nav-h:       56px;
+    }
+
+    /* ─── RESET ───────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html  { scroll-behavior: smooth; font-size: 16px; }
+    body  {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img   { display: block; max-width: 100%; }
+    a     { color: inherit; }
+
+    /* ─── NAV ─────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: var(--franchise);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav__brand {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav__links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav__links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover,
+    .nav__links a.is-active { color: #fff; }
+    .nav__date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── LAYOUT HELPERS ──────────────────────────────────────── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3.5rem;
+    }
+    .section {
+      padding: 6.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .section__header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .section__num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .section__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .section__rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ─── SCROLL REVEAL ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 00 — HERO
+    ═══════════════════════════════════════════════════════════ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+    }
+
+    /* left panel */
+    .hero__left {
+      background: var(--franchise);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__left::before {
+      content: '';
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse at 30% 50%, #0d2240 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 4.4rem);
+      font-weight: 900;
+      color: var(--paper);
+      line-height: 1.05;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero__sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 400px;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 0.85rem 1.6rem;
+      transition: background 0.22s, color 0.22s;
+      position: relative;
+    }
+    .hero__cta:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    /* right panel */
+    .hero__right {
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem;
+      border-left: 1px solid var(--rule);
+    }
+    .snapshot-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.26em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .metric {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .metric:nth-child(odd)  { padding-right: 2rem; border-right: 1px solid var(--rule); }
+    .metric:nth-child(even) { padding-left: 2rem; }
+    .metric__val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      color: var(--ink);
+    }
+    .metric__val--accent    { color: var(--accent); }
+    .metric__val--gold      { color: var(--gold); }
+    .metric__val--franchise { color: var(--franchise); }
+    .metric__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 01 — MARKET OPPORTUNITY
+    ═══════════════════════════════════════════════════════════ */
+    .market-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--rule);
+    }
+    .market-col {
+      padding: 3rem;
+      transition: background 0.25s;
+    }
+    .market-col:hover { background: rgba(0,0,0,0.018); }
+    .market-col--indie { border-right: 1px solid var(--rule); }
+
+    .badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.72rem;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    .badge--indie     { background: var(--independent); }
+    .badge--franchise { background: var(--franchise); }
+
+    .market-col h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .market-size {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .market-attrs        { list-style: none; }
+    .market-attrs li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      padding: 0.55rem 0;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      border-bottom: 1px solid var(--rule);
+      color: #444;
+    }
+    .market-attrs li:last-child { border-bottom: none; }
+    .attr-icon          { font-size: 0.65rem; margin-top: 0.2rem; flex-shrink: 0; }
+    .attr-icon--pos     { color: var(--independent); }
+    .attr-icon--neg     { color: var(--accent); }
+    .attr-icon--fpos    { color: var(--franchise); }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 02 — CHALLENGES
+    ═══════════════════════════════════════════════════════════ */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--rule);
+    }
+    .challenge {
+      padding: 2rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .challenges-grid .challenge:nth-child(3n)       { border-right: none; }
+    .challenges-grid .challenge:nth-last-child(-n+3) { border-bottom: none; }
+    .challenge__num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.65rem;
+    }
+    .challenge__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+    .challenge__desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 03 — PRICING
+    ═══════════════════════════════════════════════════════════ */
+    .pricing-section {
+      background: var(--franchise-2);
+      color: var(--paper);
+      border-top: none;
+    }
+    .pricing-section .section__title { color: var(--paper); }
+    .pricing-section .section__rule  { background: rgba(255,255,255,0.15); }
+    .pricing-section .section__num   { color: rgba(255,255,255,0.45); }
+
+    .pricing-bars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+    .price-group__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.9rem;
+    }
+    .price-group__amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      line-height: 1;
+    }
+    .price-group__amount--indie     { color: #a8c5a0; }
+    .price-group__amount--franchise { color: var(--gold); }
+    .price-group__amount span {
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      opacity: 0.55;
+    }
+
+    .bar-track {
+      height: 5px;
+      background: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bar-fill--indie     { background: #a8c5a0; }
+    .bar-fill--franchise { background: var(--gold); }
+
+    .price-group__note {
+      margin-top: 0.65rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .revenue-gap {
+      grid-column: 1 / -1;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      padding: 2.25rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      margin-top: 0.5rem;
+    }
+    .revenue-gap__num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .revenue-gap__text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+    }
+    .revenue-gap__text strong {
+      color: var(--paper);
+      font-weight: 400;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 04 — UPSIDE SCENARIO
+    ═══════════════════════════════════════════════════════════ */
+    .upside-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--rule);
+    }
+    .upside-card {
+      padding: 2.5rem;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+    .upside-card:last-child { border-right: none; }
+    .upside-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .upside-card:nth-child(1)::after { background: var(--muted); }
+    .upside-card:nth-child(2)::after { background: var(--franchise); }
+    .upside-card:nth-child(3)::after { background: var(--gold); }
+
+    .upside-card__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .upside-card__val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .upside-card__val--franchise { color: var(--franchise); }
+    .upside-card__val--gold      { color: var(--gold); }
+    .upside-card__desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 05 — COMPETITIVE FEATURE COMPARISON
+    ═══════════════════════════════════════════════════════════ */
+    .tab-bar {
+      display: flex;
+      border: 1px solid var(--rule);
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 0.82rem 1rem;
+      background: none;
+      border: none;
+      border-right: 1px solid var(--rule);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.18s, color 0.18s;
+    }
+    .tab-btn:last-child { border-right: none; }
+    .tab-btn:hover      { background: rgba(0,0,0,0.03); color: var(--ink); }
+    .tab-btn.is-active  { background: var(--franchise); color: #fff; }
+
+    .tab-panel          { display: none; }
+    .tab-panel.is-active { display: block; }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+    .comp-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      background: var(--franchise);
+      color: rgba(255,255,255,0.8);
+      border-right: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .comp-table th:first-child { color: var(--gold); }
+    .comp-table td {
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid var(--rule);
+      border-right: 1px solid var(--rule);
+      vertical-align: middle;
+      color: #444;
+    }
+    .comp-table td:first-child {
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.8rem;
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr:hover td { background: rgba(0,0,0,0.013); }
+
+    /* dot indicators */
+    .dot-wrap { text-align: center; }
+    .dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .dot--full    { background: var(--franchise); }
+    .dot--partial { background: var(--gold); }
+    .dot--none    { background: transparent; border: 1.5px solid #ccc; }
+
+    .table-legend {
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--rule);
+      border-top: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--muted);
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .table-legend span { display: flex; align-items: center; gap: 0.45rem; }
+
+    /* indie comparison table — text cells */
+    .cell-text        { font-size: 0.77rem !important; color: #444 !important; }
+    .cell-text--warn  { font-size: 0.77rem !important; color: var(--accent) !important; }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECTION 06 — ROADMAP
+    ═══════════════════════════════════════════════════════════ */
+    .roadmap {
+      display: flex;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .roadmap-step {
+      flex: 1;
+      padding: 2.25rem 1.75rem;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+    .roadmap-step:last-child { border-right: none; }
+    .roadmap-step::after {
+      content: '→';
+      position: absolute;
+      right: -0.55rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.75rem;
+      color: var(--rule);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .roadmap-step:last-child::after { display: none; }
+
+    .roadmap-step__phase {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.54rem;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .roadmap-step__action {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      line-height: 1.3;
+    }
+    .roadmap-step__desc {
+      font-size: 0.77rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CONCLUSION
+    ═══════════════════════════════════════════════════════════ */
+    .conclusion {
+      background: var(--franchise);
+      padding: 7rem 0;
+    }
+    .conclusion__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .conclusion__eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.26em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .conclusion__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .conclusion__title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .conclusion__points {
+      list-style: none;
+    }
+    .conclusion__points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+    .conclusion__points li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      font-family: monospace;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────── */
+    .footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.3);
+      padding: 2rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+    }
+    .footer__brand { color: var(--gold); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 2.5rem; }
+      .hero       { grid-template-columns: 1fr; }
+      .hero__left { min-height: 60vh; }
+      .pricing-bars { grid-template-columns: 1fr; }
+      .revenue-gap  { grid-column: auto; }
+      .challenges-grid { grid-template-columns: 1fr 1fr; }
+      .challenges-grid .challenge:nth-child(3n)       { border-right: 1px solid var(--rule); }
+      .challenges-grid .challenge:nth-child(2n)       { border-right: none; }
+      .challenges-grid .challenge:nth-last-child(-n+2) { border-bottom: none; }
+      .conclusion__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 0 1.5rem; }
+      .nav__links { display: none; }
+      .hero__left,
+      .hero__right { padding: 4rem 2rem; }
+      .market-compare { grid-template-columns: 1fr; }
+      .market-col--indie { border-right: none; border-bottom: 1px solid var(--rule); }
+      .upside-grid  { grid-template-columns: 1fr; }
+      .upside-card  { border-right: none; border-bottom: 1px solid var(--rule); }
+      .roadmap      { flex-direction: column; }
+      .roadmap-step { border-right: none; border-bottom: 1px solid var(--rule); }
+      .roadmap-step:last-child { border-bottom: none; }
+      .roadmap-step::after { display: none; }
+      .challenges-grid { grid-template-columns: 1fr; }
+      .challenge    { border-right: none !important; }
+      .container    { padding: 0 1.5rem; }
+      .section      { padding: 4.5rem 0; }
+      .conclusion__inner { padding: 0 1.5rem; }
+      .footer       { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="#snapshot" class="nav__brand">DealerFire · Product Strategy</a>
+    <ul class="nav__links">
+      <li><a href="#snapshot">Snapshot</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#upside">Upside</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <div class="nav__date">Leadership Review · Mar 2026</div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO / SNAPSHOT
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hero" id="snapshot" aria-labelledby="hero-heading">
+
+    <div class="hero__left">
+      <p class="hero__eyebrow" aria-hidden="true">Leadership Review</p>
+      <h1 class="hero__title" id="hero-heading">
+        Independent<br>
+        vs <em>Franchise</em><br>
+        Market
+      </h1>
+      <p class="hero__sub">
+        Defining future direction and revenue expansion strategy.
+        A data-driven case for enterprise repositioning.
+      </p>
+      <a href="#market" class="hero__cta" aria-label="Explore the analysis">
+        <span aria-hidden="true">↓</span> Explore the Analysis
+      </a>
+    </div>
+
+    <div class="hero__right">
+      <p class="snapshot-label">Current Business Snapshot</p>
+      <div class="metrics-grid" role="list">
+
+        <div class="metric" role="listitem">
+          <div class="metric__val metric__val--accent">$306K</div>
+          <div class="metric__label">Current MRR</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric__val">$3.67M</div>
+          <div class="metric__label">Annual Contract Value</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric__val">341</div>
+          <div class="metric__label">Total Dealerships</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric__val metric__val--gold">263</div>
+          <div class="metric__label">Independent Dealers</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric__val metric__val--franchise">78</div>
+          <div class="metric__label">Franchise Dealers</div>
+        </div>
+        <div class="metric" role="listitem">
+          <div class="metric__val">1</div>
+          <div class="metric__label">OEM Certifications (Porsche)</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       01 — MARKET OPPORTUNITY
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="market" aria-labelledby="market-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">01</span>
+        <h2 class="section__title" id="market-heading">Market Opportunity</h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="market-compare reveal">
+
+        <!-- Independent -->
+        <div class="market-col market-col--indie">
+          <span class="badge badge--indie">Independent</span>
+          <h3>Volume Game</h3>
+          <p class="market-size">
+            38,000 dealers in USA &nbsp;·&nbsp;
+            Competitors: DealerCenter, CarsForSale, Dealer Car Search
+          </p>
+          <ul class="market-attrs">
+            <li><span class="attr-icon attr-icon--neg" aria-hidden="true">✕</span> Highly price sensitive — low switching cost</li>
+            <li><span class="attr-icon attr-icon--neg" aria-hidden="true">✕</span> Intense competition, limited differentiation</li>
+            <li><span class="attr-icon attr-icon--neg" aria-hidden="true">✕</span> Low margin, high churn risk</li>
+            <li><span class="attr-icon attr-icon--neg" aria-hidden="true">✕</span> Requires high volume to scale</li>
+            <li><span class="attr-icon attr-icon--pos" aria-hidden="true">✓</span> Large total addressable market (38K)</li>
+            <li><span class="attr-icon attr-icon--pos" aria-hidden="true">✓</span> Current cash-flow base (263 active dealers)</li>
+          </ul>
+        </div>
+
+        <!-- Franchise -->
+        <div class="market-col">
+          <span class="badge badge--franchise">Franchise</span>
+          <h3>Enterprise Game</h3>
+          <p class="market-size">
+            15,842 dealers in USA &nbsp;·&nbsp;
+            Competitors: Dealer Inspire, DealerOn, NetDriven
+          </p>
+          <ul class="market-attrs">
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> Higher ACV &amp; larger, longer-term contracts</li>
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> OEM-driven standardization</li>
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> Access to CRM installed base</li>
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> End-to-end retail journey capability</li>
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> Stronger retention via certifications</li>
+            <li><span class="attr-icon attr-icon--fpos" aria-hidden="true">✓</span> Enterprise positioning opportunity</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       02 — CURRENT CHALLENGES
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="challenges" aria-labelledby="challenges-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">02</span>
+        <h2 class="section__title" id="challenges-heading">Current Challenges</h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="challenges-grid reveal">
+
+        <div class="challenge">
+          <div class="challenge__num">CH-01</div>
+          <div class="challenge__title">OEM Certification Loss</div>
+          <p class="challenge__desc">Loss of OEM certifications limits franchise market access and enterprise credibility. Only one active certification remains (Porsche).</p>
+        </div>
+
+        <div class="challenge">
+          <div class="challenge__num">CH-02</div>
+          <div class="challenge__title">Weak Product-Market Fit</div>
+          <p class="challenge__desc">Weak PMF in the independent segment driven by low pricing pressure and commoditization — making differentiation and margin growth difficult.</p>
+        </div>
+
+        <div class="challenge">
+          <div class="challenge__num">CH-03</div>
+          <div class="challenge__title">Website Instability</div>
+          <p class="challenge__desc">Core infrastructure instability undermines sales credibility, customer trust, and the ability to pitch the product as enterprise-grade.</p>
+        </div>
+
+        <div class="challenge">
+          <div class="challenge__num">CH-04</div>
+          <div class="challenge__title">Limited Sales Resources</div>
+          <p class="challenge__desc">5-person independent sales team. Zero dedicated franchise sales staff — a critical gap for pursuing enterprise pipeline.</p>
+        </div>
+
+        <div class="challenge">
+          <div class="challenge__num">CH-05</div>
+          <div class="challenge__title">DNS Management Risk</div>
+          <p class="challenge__desc">Risk of customer attrition due to failure to retain DNS management controls. Loss of DNS = loss of account leverage.</p>
+        </div>
+
+        <div class="challenge">
+          <div class="challenge__num">CH-06</div>
+          <div class="challenge__title">Feature Parity Gap</div>
+          <p class="challenge__desc">Missing key franchise-critical capabilities vs. DealerOn and Dealer Inspire: digital retailing (Buy Online), AI chat, behavioral personalization, save &amp; compare.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       03 — PRICING REALITY
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section pricing-section" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">03</span>
+        <h2 class="section__title" id="pricing-heading">Pricing Reality</h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="pricing-bars reveal" data-bars>
+
+        <div class="price-group">
+          <p class="price-group__label">Independent Market</p>
+          <p class="price-group__amount price-group__amount--indie">$75 – $125<span>&thinsp;/mo</span></p>
+          <div class="bar-track" role="presentation">
+            <div class="bar-fill bar-fill--indie" data-target="7"></div>
+          </div>
+          <p class="price-group__note">Low margin &mdash; high volume requirement</p>
+        </div>
+
+        <div class="price-group">
+          <p class="price-group__label">Franchise Market</p>
+          <p class="price-group__amount price-group__amount--franchise">$1,300 – $1,600<span>&thinsp;/mo</span></p>
+          <div class="bar-track" role="presentation">
+            <div class="bar-fill bar-fill--franchise" data-target="100"></div>
+          </div>
+          <p class="price-group__note">High margin &mdash; enterprise contracts</p>
+        </div>
+
+        <div class="revenue-gap">
+          <div class="revenue-gap__num">15×</div>
+          <div class="revenue-gap__text">
+            <strong>Revenue gap per dealer.</strong>
+            The franchise market generates approximately 15 times more revenue per account
+            than the independent segment. Even after a 30% aggregator commission via Shift Digital,
+            net franchise revenue ($1,050/mo) remains ~10× higher than a typical independent deal at $100/mo.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       04 — FINANCIAL UPSIDE SCENARIO
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="upside" aria-labelledby="upside-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">04</span>
+        <h2 class="section__title" id="upside-heading">Financial Upside Scenario</h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="upside-grid reveal">
+
+        <div class="upside-card">
+          <div class="upside-card__label">Target Onboarding</div>
+          <div class="upside-card__val">200</div>
+          <p class="upside-card__desc">Franchise dealers onboarded at an average contract value of $1,500/month — 5% of the total US franchise addressable market.</p>
+        </div>
+
+        <div class="upside-card">
+          <div class="upside-card__label">Gross MRR</div>
+          <div class="upside-card__val upside-card__val--franchise">$300,000</div>
+          <p class="upside-card__desc">200 × $1,500 = $300K MRR gross — nearly matching the entire current business MRR from 341 dealers.</p>
+        </div>
+
+        <div class="upside-card">
+          <div class="upside-card__label">Net MRR (after 30% commission)</div>
+          <div class="upside-card__val upside-card__val--gold">$210,000</div>
+          <p class="upside-card__desc">Equivalent to onboarding ~2,100 independent dealers at $100/mo — a fraction of the operational overhead required.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       05 — COMPETITIVE LANDSCAPE
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="competitive" aria-labelledby="competitive-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">05</span>
+        <h2 class="section__title" id="competitive-heading">Competitive Landscape</h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="reveal">
+
+        <!-- Tab bar -->
+        <div class="tab-bar" role="tablist" aria-label="Competitor comparison">
+          <button class="tab-btn is-active"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="tab-franchise"
+                  id="btn-franchise"
+                  onclick="switchTab(this, 'tab-franchise')">
+            Franchise Competitors
+          </button>
+          <button class="tab-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="tab-indie"
+                  id="btn-indie"
+                  onclick="switchTab(this, 'tab-indie')">
+            Independent Competitors
+          </button>
+        </div>
+
+        <!-- Franchise comparison -->
+        <div id="tab-franchise" class="tab-panel is-active" role="tabpanel" aria-labelledby="btn-franchise">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature Category</th>
+                <th scope="col">DealerFire</th>
+                <th scope="col">DealerOn</th>
+                <th scope="col">Dealer Inspire</th>
+                <th scope="col">NetDriven</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Behavioral Personalization</td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+              </tr>
+              <tr>
+                <td>Digital Retailing (Buy Online)</td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+              </tr>
+              <tr>
+                <td>AI Chat / Conversations Platform</td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+              </tr>
+              <tr>
+                <td>Save &amp; Compare Tools</td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+              </tr>
+              <tr>
+                <td>Advanced Incentive / Coupon Systems</td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+              </tr>
+              <tr>
+                <td>Third-party Marketplace</td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+              </tr>
+              <tr>
+                <td>Service / Repair Engagement Tools</td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--none"    title="Not available" aria-label="None"></span></td>
+                <td class="dot-wrap"><span class="dot dot--partial" title="Partial / in development" aria-label="Partial"></span></td>
+                <td class="dot-wrap"><span class="dot dot--full"    title="Full capability" aria-label="Full"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-legend">
+            <span><span class="dot dot--full" aria-hidden="true"></span> Full capability</span>
+            <span><span class="dot dot--partial" aria-hidden="true"></span> Partial / in progress</span>
+            <span><span class="dot dot--none" aria-hidden="true"></span> Not available</span>
+          </div>
+        </div>
+
+        <!-- Independent comparison -->
+        <div id="tab-indie" class="tab-panel" role="tabpanel" aria-labelledby="btn-indie">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th scope="col">Capability Area</th>
+                <th scope="col">DealerFire</th>
+                <th scope="col">DealerCenter</th>
+                <th scope="col">CarsForSale</th>
+                <th scope="col">Dealer Car Search</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Website Performance &amp; SEO</td>
+                <td class="cell-text">High-perf Engine6 platform, SEO &amp; conversion-focused</td>
+                <td class="cell-text">Reliable hosted responsive sites with integrated hosting</td>
+                <td class="cell-text">Branded responsive websites within bundled package</td>
+                <td class="cell-text">Mobile-first, optimised for inventory browsing</td>
+              </tr>
+              <tr>
+                <td>Customisation &amp; Page Control</td>
+                <td class="cell-text">Advanced drag-and-drop builder, high flexibility</td>
+                <td class="cell-text">Template-based, limited layout flexibility</td>
+                <td class="cell-text">Customisable templates with managed build services</td>
+                <td class="cell-text">Template-based with optional custom work</td>
+              </tr>
+              <tr>
+                <td>DMS Capability</td>
+                <td class="cell-text--warn">Not a DMS provider — website &amp; marketing focused</td>
+                <td class="cell-text">Full DMS incl. deal desking, F&amp;I, BHPH, lender integrations</td>
+                <td class="cell-text">Basic DMS features within bundled platform</td>
+                <td class="cell-text">CRM / lead focus — not a full DMS</td>
+              </tr>
+              <tr>
+                <td>CRM &amp; Lead Workflows</td>
+                <td class="cell-text">CRM via DealerSocket integration for lead tracking</td>
+                <td class="cell-text">Robust built-in CRM with AI responder &amp; workflow automation</td>
+                <td class="cell-text">Integrated CRM with soft credit pre-qualification</td>
+                <td class="cell-text">Lead Hunter system: advanced scoring &amp; engagement tools</td>
+              </tr>
+              <tr>
+                <td>Call Tracking &amp; Craigslist</td>
+                <td class="cell-text--warn">Handled via third-party integrations only</td>
+                <td class="cell-text">Call tracking available within CRM Pro tier</td>
+                <td class="cell-text">Inventory exposure &amp; posting tools; limited automation</td>
+                <td class="cell-text">Dedicated call tracking &amp; Craigslist posting per vehicle</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div><!-- /.reveal -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       06 — ROADMAP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="roadmap" aria-labelledby="roadmap-heading">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <span class="section__num" aria-hidden="true">06</span>
+        <h2 class="section__title" id="roadmap-heading">
+          Certification &amp; Entry Plan
+          <span style="font-size:1rem; color:var(--muted); font-family:'DM Mono',monospace; font-weight:300;">&nbsp;6–12 Months</span>
+        </h2>
+        <div class="section__rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="roadmap reveal">
+
+        <div class="roadmap-step">
+          <div class="roadmap-step__phase">Phase 1</div>
+          <div class="roadmap-step__action">Rebuild OEM Certifications</div>
+          <p class="roadmap-step__desc">Restore and pursue new OEM certification pathways to unlock franchise market eligibility and enterprise credibility.</p>
+        </div>
+
+        <div class="roadmap-step">
+          <div class="roadmap-step__phase">Phase 2</div>
+          <div class="roadmap-step__action">Engage Aggregators</div>
+          <p class="roadmap-step__desc">Partner with Shift Digital and other aggregators to access distribution. Net 70% revenue retained after 30% commission.</p>
+        </div>
+
+        <div class="roadmap-step">
+          <div class="roadmap-step__phase">Phase 3</div>
+          <div class="roadmap-step__action">Build Feature Parity</div>
+          <p class="roadmap-step__desc">Close critical gaps: digital retailing (Buy Online), AI chat, behavioral personalization, save &amp; compare tools.</p>
+        </div>
+
+        <div class="roadmap-step">
+          <div class="roadmap-step__phase">Phase 4</div>
+          <div class="roadmap-step__action">Stabilize Infrastructure</div>
+          <p class="roadmap-step__desc">Resolve website instability and secure DNS management to reduce churn risk and support an enterprise-grade product pitch.</p>
+        </div>
+
+        <div class="roadmap-step">
+          <div class="roadmap-step__phase">Phase 5</div>
+          <div class="roadmap-step__action">Hire Franchise Sales Head</div>
+          <p class="roadmap-step__desc">Recruit dedicated franchise-focused sales leadership to drive enterprise pipeline and OEM certification relationships.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CONCLUSION
+  ══════════════════════════════════════════════════════════ -->
+  <div class="conclusion" role="region" aria-labelledby="conclusion-heading">
+    <div class="conclusion__inner">
+
+      <div class="reveal">
+        <p class="conclusion__eyebrow">Recommended Direction</p>
+        <h2 class="conclusion__title" id="conclusion-heading">
+          Shift primary focus to the <em>Franchise</em> market.
+        </h2>
+      </div>
+
+      <ul class="conclusion__points reveal">
+        <li>Shift primary commercial focus to the franchise market</li>
+        <li>Maintain independent base as ongoing cash-flow engine</li>
+        <li>Build certification roadmap immediately — 6–12 month horizon</li>
+        <li>Hire dedicated franchise sales leadership</li>
+        <li>Reposition product as an enterprise retail platform solution</li>
+        <li>Independent = Volume Game, Low Margin &rarr; Franchise = Enterprise Game, High Margin</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <span class="footer__brand">DealerFire</span>
+    <span>Product Strategy · Independent vs Franchise Market</span>
+    <span>Leadership Review · March 2026 · Internal</span>
+  </footer>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────────── -->
+  <script>
+    /* ── Scroll reveal ──────────────────────────────────────── */
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('is-visible'), i * 75);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      items.forEach(el => io.observe(el));
+    })();
+
+    /* ── Bar chart animation ────────────────────────────────── */
+    (function () {
+      const wrapper = document.querySelector('[data-bars]');
+      if (!wrapper) return;
+      const barIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+              bar.style.width = bar.dataset.target + '%';
+            });
+            barIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      barIo.observe(wrapper);
+    })();
+
+    /* ── Tab switching ──────────────────────────────────────── */
+    function switchTab(btn, panelId) {
+      // deactivate all
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('is-active'));
+      // activate selected
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(panelId).classList.add('is-active');
+    }
+
+    /* ── Active nav link on scroll ──────────────────────────── */
+    (function () {
+      const sections = document.querySelectorAll('section[id]');
+      const links    = document.querySelectorAll('.nav__links a');
+      function onScroll() {
+        let current = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - 80) current = s.id;
+        });
+        links.forEach(a => {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
